@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var weather: WeatherResponse
     @State var weatherData: WeatherData
+    @State var cityName = ""
     
     var body: some View {
         NavigationView {
@@ -60,14 +61,17 @@ struct ContentView: View {
                     .frame(maxWidth: 100)
                 }
                 Spacer()
-                NavigationLink {
-                    CityList(weatherData: weatherData)
-                } label: {
-                    Image(systemName: "list.bullet")
-                    Text("City List")
-                }
-                .foregroundColor(.black)
-                .font(.body)
+                
+                // TODO: Переход на неиспользуемое View. Список городов
+//                NavigationLink {
+//                    CityList(weatherData: weatherData)
+//                } label: {
+//                    Image(systemName: "list.bullet")
+//                    Text("City List")
+//                }
+//                .foregroundColor(.black)
+//                .font(.body)
+                
             }
             .font(.title)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -82,8 +86,9 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView(weatherData: previewWeather)
-    }
-}
+// MARK: Ошибка preview
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView(weatherData: previewWeather)
+//    }
+//}

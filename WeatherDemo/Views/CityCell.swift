@@ -5,6 +5,8 @@
 //  Created by Святослав Федотов on 26.05.2023.
 //
 
+// MARK: Не используемое view, см. CityList
+
 import SwiftUI
 
 struct CityCell: View {
