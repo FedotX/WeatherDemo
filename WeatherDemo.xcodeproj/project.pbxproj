@@ -86,8 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				F62207852A200994006704A0 /* ContentView.swift */,
-				F62207932A2010BD006704A0 /* CityList.swift */,
-				F62207912A200D6D006704A0 /* CityCell.swift */,
+				F6B38E692A25E9A200A4BB41 /* ToDo */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -115,6 +114,15 @@
 				F62207972A201719006704A0 /* WeatherResponse.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F6B38E692A25E9A200A4BB41 /* ToDo */ = {
+			isa = PBXGroup;
+			children = (
+				F62207932A2010BD006704A0 /* CityList.swift */,
+				F62207912A200D6D006704A0 /* CityCell.swift */,
+			);
+			path = ToDo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

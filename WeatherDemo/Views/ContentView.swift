@@ -15,10 +15,29 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
+                HStack {
+                    TextField("Write your city...", text: $cityName)
+                        .padding(.horizontal)
+                        .textFieldStyle(.roundedBorder)
+                    
+                    Button {
+                        weather.city = cityName
+                        Task {
+                            let result = try await WeatherResponse().getWeather(city: cityName)
+                            self.weatherData = result
+                        }
+                    } label: {
+                        Text("OK")
+                    }
+                }
+                .padding()
+                
                 Text(weatherData.name)
                     .font(.largeTitle)
                     .padding()
+                
                 Spacer()
+                
                 AsyncImage(url: URL(string: "https://openweathermap.org/img/wn/\( weatherData.weather[0].icon)@2x.png"), content: { image in
                     image
                         .resizable()
@@ -37,9 +56,9 @@ struct ContentView: View {
                         Text("Current")
                             .font(.subheadline)
                     }
-                    .frame(maxWidth: 100)
                     
                     Spacer()
+                    
                     VStack(spacing: 20) {
                         VStack {
                             Text("\(weatherData.main.temp_max.roundDouble())º")
@@ -52,28 +71,31 @@ struct ContentView: View {
                                 .font(.subheadline)
                         }
                     }
+                    
                     Spacer()
-                    VStack(alignment: .center) {
+                    
+                    VStack {
                         Text("\(weatherData.main.feels_like.roundDouble())º")
                         Text("Feels like")
                             .font(.subheadline)
                     }
-                    .frame(maxWidth: 100)
                 }
+                .padding()
+                .font(.title)
+                
                 Spacer()
                 
                 // TODO: Переход на неиспользуемое View. Список городов
-//                NavigationLink {
-//                    CityList(weatherData: weatherData)
-//                } label: {
-//                    Image(systemName: "list.bullet")
-//                    Text("City List")
-//                }
-//                .foregroundColor(.black)
-//                .font(.body)
+                //                NavigationLink {
+                //                    CityList(weatherData: weatherData)
+                //                } label: {
+                //                    Image(systemName: "list.bullet")
+                //                    Text("City List")
+                //                }
+                //                .foregroundColor(.black)
+                //                .font(.body)
                 
             }
-            .font(.title)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(hue: 0.623, saturation: 0.139, brightness: 0.99))
             .onAppear {
